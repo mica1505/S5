@@ -1,2 +1,5 @@
 bin/*
 .metdata/*
+.gitignore.save
+.gitignore.save.1
+.gitignore~
