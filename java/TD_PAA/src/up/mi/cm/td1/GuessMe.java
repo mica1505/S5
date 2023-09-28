@@ -1,0 +1,33 @@
+package up.mi.cm.td1;
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessMe {
+	public static void main(String [] args) {
+		Random rand = new Random();
+		int borneInf, guess = rand.nextInt(1,100);
+		System.out.println(guess);
+		boolean quit = false;
+		while(!quit) {
+			System.out.println("Le chiffre est plus grand (+), plus petit (-) ou egal (=) : ");
+			Scanner inputAnswer = new Scanner(System.in);
+			String answer = inputAnswer.next();
+			switch(answer) {
+			case "+":
+				borneInf = guess;
+				guess = rand.nextInt(borneInf,100);
+				System.out.println( " "+ guess);
+				break;
+			case "-":
+				final int BORNESUP = guess;
+				guess = rand.nextInt(1,BORNESUP);
+				System.out.println(" "+ guess);
+				break;
+			case "=":
+				quit = true;
+				System.out.println("BRAVO");
+				break;
+			}	
+		}
+	}
+}

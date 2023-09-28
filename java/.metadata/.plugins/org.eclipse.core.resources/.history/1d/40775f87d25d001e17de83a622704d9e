@@ -1,0 +1,10 @@
+package up.mi.cm.td1;
+import java.util.Random;
+
+public class GuessMe {
+	public static void main(String [] args) {
+		Random rand = new Random();
+		int guess = rand.nextInt(1,100);
+		System.out.println(guess);
+	}
+}
