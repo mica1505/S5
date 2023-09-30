@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/users/licence/in09872/S5/java/.metadata/.plugins/org.eclipse.jdt.core
+1570782070.index
+2308840549.index
+1865797976.index

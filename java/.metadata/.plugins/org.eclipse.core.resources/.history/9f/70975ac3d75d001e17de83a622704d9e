@@ -1,0 +1,17 @@
+package up.mi.cm.td1;
+
+public class NbPremiers {
+	public static void main(String [] args) {
+		System.out.println(allIntegers(133l));
+	}
+	static boolean allIntegers(int n) {
+		boolean premier = true;
+		int i,k;
+		for(i=2,k=0;(i<n && premier);i++, k=(k*2)+1) {
+			if(n%k==0) {
+				premier = false;
+			}
+		}
+		return premier;
+	}
+}

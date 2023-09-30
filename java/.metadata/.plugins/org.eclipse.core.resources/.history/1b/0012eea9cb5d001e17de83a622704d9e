@@ -1,0 +1,16 @@
+package up.mi.cm.td1;
+
+import java.util.Scanner;
+import UtilMath;
+
+public class InterfaceUtilMath{
+    public static void main(String [] args){
+        System.out.println("Veiller choisir une opération a effectuer : ");
+        Scanner inputChoice = new Scanner(System.in);
+        switch(inputChoice.next()) {
+            case "S" : 
+            System.out.println(somme3(1,1,1));
+        }
+
+    }
+}
