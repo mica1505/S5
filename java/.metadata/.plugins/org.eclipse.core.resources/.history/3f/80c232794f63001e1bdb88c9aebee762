@@ -1,0 +1,25 @@
+package up.mi.cm.td2;
+
+public class Vecteur{
+	
+	Point a,b;
+	
+	public Vecteur(Point a,Point b) {
+		this.a=a;
+		this.b=b;
+	}
+	
+	public Point getA() {
+		return this.a;
+	}
+	
+	public Point getB() {
+		return this.b;
+	}
+	
+	public boolean equals(Object o) {
+		if((o == null) || !(o instanceof Vecteur )) {
+			
+		}
+	}
+}

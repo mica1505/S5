@@ -1,0 +1,9 @@
+package up.mi.cm.td2;
+
+import up.mi.jgm.maths.Rationnel;
+//rationnel = 9isma
+public class UtilMath {
+	public static Rationnel puissance(Rationnel r,int n){
+		Rationnel
+	}
+}

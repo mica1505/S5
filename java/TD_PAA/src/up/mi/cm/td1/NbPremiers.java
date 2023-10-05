@@ -1,7 +1,7 @@
 package up.mi.cm.td1;
 
 
-public class NbPremiers {
+public class NbPremiers{
 	public static void main(String [] args) {
 		System.out.println(allIntegers(15));
 		intToString(136);

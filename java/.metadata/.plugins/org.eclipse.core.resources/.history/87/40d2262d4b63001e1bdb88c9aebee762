@@ -1,0 +1,17 @@
+package up.mi.cm.td2;
+
+public class Point {
+	
+	private int x,y;
+	
+	public Point(int x,int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public float Distance(Point p) {
+		float x = p.getX() - this.getX();
+		float y = p.getY()  - this.getY();
+		return 
+	}
+}
