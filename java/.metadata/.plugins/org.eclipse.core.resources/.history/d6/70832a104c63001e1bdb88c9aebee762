@@ -1,0 +1,23 @@
+package up.mi.cm.td2;
+
+public class Disque {
+	Point abscissesCentre;
+	double rayon;
+	
+	public Disque(Point abscissesCentre,double rayon) {
+		this.abscissesCentre = abscissesCentre;
+		this.rayon = rayon;
+	}
+	
+	public boolean appartientAuDisque(Point p) {
+		double disPointCentre = p.Distance(this.abscissesCentre);
+		boolean res;
+		if(disPointCentre<rayon) {
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		return res;
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;TD_PAA&apos;&#x0A;- Original project: &apos;TD_PAA&apos;&#x0A;- Original element: &apos;TD_PAA/src/up.mi.cm.td2.util&apos;" description="Delete element" element1="/src&lt;up.mi.cm.td2.util" element2="/src&lt;up.mi.cm.td2" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1696487210022" subPackages="false" version="1.0"/>
+</session>
