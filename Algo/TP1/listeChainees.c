@@ -44,6 +44,10 @@ void suppCel(int pos, cel * liste){
     int i;
     if(pos == 1){
         printf("On ne peut pas supprimer le premier element de la liste.");
+        liste->succ->pre = NULL;
+        posListe = liste->succ;
+        liste = posListe;
+        liste = liste->succ;
     }
     else{
 
@@ -71,12 +75,15 @@ int main(){
     //menu 
     char choix;
     int quitter= 0;
-    cel * poly;
-    printf("insertion de point\n");
+    cel * poly,* nvPoint;
     point p1;
-    scanf("Entrez x : %d", &p1.x);
-    scanf("Entrez y : %d", &p1.y);
+    printf("insertion du premier point\nEntrez x :\n");
+    scanf("%d", &p1.x);
+    printf("Entrez y :\n");
+    scanf("%d", &p1.y);
+    printf("-----------%d%d",p1.x,p1.y);
     poly = nouvCell(p1);
+    int pos = 0;
     while(!quitter){
         printf("Que voulez vous faire? (i->inserer, s->supprimer, q->quitter)");
         scanf("%s",&choix);
@@ -84,24 +91,33 @@ int main(){
             case 'i':
                 printf("insertion de point\n");
                 point p;
-                scanf("Entrez x : %d", &p.x);
-                scanf("Entrez y : %d", &p.y);
+
+                printf("\nEntrez x : ");
+                scanf("%d", &p.x);
+
+                printf("\nEntrez y : ");
+                scanf("%d", &p.y);
+                //demander a l'utilisateur a quelle position il veut inserer?
+                nvPoint = nouvCell(p);
+                insererCel(poly,++pos,nvPoint);
                 afficher(poly);
                 break;
             case 's':
                 printf("suppresison de point\n");
                 int ind;
-                scanf("Entrez l'indice du point que vous voulez supprimer : %d", &ind);
+                printf("Entrez l'indice du point que vous voulez supprimer : ");
+                scanf("%d", &ind);
                 suppCel(ind,poly);
                 afficher(poly);
                 break;
             case 'q':
                 afficher(poly);
                 printf("QUITTER\n");
+                //pour free faut free toute la memoire et pas que la premiere case !!!!!
                 free(poly);
                 quitter = 1;
         }
-    }
+}
  /*  point p,p2,p3;
     p.x = 1;
     p.y = 2; 
