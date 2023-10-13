@@ -1,0 +1,37 @@
+package up.mi.cm.TD2;
+
+public class Disque {
+	Point abscissesCentre;
+	double rayon;
+	
+	public Disque(Point abscissesCentre,double rayon) {
+		this.abscissesCentre = abscissesCentre;
+		this.rayon = rayon;
+	}
+	
+	public Point getCoordonnees() {
+		return this.abscissesCentre;
+	}
+	
+	public double getRayon() {
+		return this.rayon;
+	}
+	
+	public boolean appartientAuDisque(Point p) {
+		
+		return (p.Distance(this.abscissesCentre)<rayon)?true:false;
+	}
+	
+	//2 disques sont en intersection si lq distqnce entre leur 2 centre est inferieure 
+	//a la somme de leur rayon?
+	
+	public boolean intersection(Disque d) {
+		double sommeRayon = this.rayon + d.getRayon();
+		double distanceP = (this.abscissesCentre).Distance(d.getCoordonnees());
+		return (distanceP<=sommeRayon)? true : false;
+	}
+	
+	public Disque translation(Vecteur v) {
+		return this;
+	}
+}

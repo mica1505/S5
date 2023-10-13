@@ -1,0 +1,38 @@
+package up.mi.cm.TD2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RepertoireSimple {
+	List <Personne> personnes;
+	
+	public RepertoireSimple() {
+		personnes = new ArrayList<Personne>();
+	}
+	
+	public void addPersonne(String nom,String prenom,String num) {
+		Personne p = new Personne(nom,prenom);
+		p.addNumero(num);
+		personnes.add(p);
+	}
+	
+	public String chercheNumero(String nom,String prenom) {
+		//peux faire mieux avec une boucle for qui s'arrete des qu'on trouve la personne
+		boolean trouve = false;
+		Personne per= new Personne(nom,prenom);
+		Personne p = null;
+		String res = "";
+		for(int i=0;i<personnes.size() && !trouve;i++) {
+			p = personnes.get(i);
+			if(per.equals(p)) {
+				res = p.getNum();
+				trouve = true;
+			}
+		}
+		if(!trouve) {
+			res = nom + " " + prenom + "est inconnue.";
+		}
+		return res;
+	}
+
+}

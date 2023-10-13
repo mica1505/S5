@@ -1,7 +1,0 @@
-package up.mi.cm.td2.util;
-
-public class UtilMath {
-	public static int puissance(int n,int e){
-		
-		}
-	}
