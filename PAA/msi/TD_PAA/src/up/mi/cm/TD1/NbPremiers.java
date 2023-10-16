@@ -1,0 +1,30 @@
+package up.mi.cm.td1;
+
+
+public class NbPremiers{
+	public static void main(String [] args) {
+		System.out.println(allIntegers(15));
+		intToString(136);
+	}
+	static boolean allIntegers(int n) {
+		boolean premier = true;
+		int impairs;
+		for(int i=1;(((i*2)+1)<n && premier);i++) {
+			impairs = (i*2)+1;
+			System.out.println(impairs);
+			if(n%impairs==0 || (impairs > Math.sqrt(n))){
+				premier = false;
+			}
+		}
+		return premier;
+	}
+	
+	public static String intToString(int n) {
+		StringBuffer res =  new StringBuffer();
+		for(int i=n,k=10;i>0;i=i-(i%k),k*=10) {
+			System.out.println((i%k));
+		}
+		System.out.println(res);
+		return "";
+	}
+}
