@@ -1,4 +1,4 @@
-package up.mi.cm.td1;
+package up.mi.cm.TD1;
 
 public class UtilMath{
     public static int somme3(int a,int b, int c){

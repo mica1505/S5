@@ -1,4 +1,4 @@
-package up.mi.cm.td1;
+package up.mi.cm.TD1;
 
 public class UtilMoy{
     public static double moyenne(double exam, double cc){

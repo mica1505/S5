@@ -1,30 +1,61 @@
-package up.mi.cm.td1;
+package up.mi.cm.TD1;
 
 
 public class NbPremiers{
-	public static void main(String [] args) {
-		System.out.println(allIntegers(15));
-		intToString(136);
-	}
-	static boolean allIntegers(int n) {
+	
+	static boolean premierKN(int n) {
 		boolean premier = true;
-		int impairs;
-		for(int i=1;(((i*2)+1)<n && premier);i++) {
-			impairs = (i*2)+1;
-			System.out.println(impairs);
-			if(n%impairs==0 || (impairs > Math.sqrt(n))){
+		for(int i=0;i<n && premier;i++) {
+			if(n%i==0) {
 				premier = false;
 			}
 		}
 		return premier;
 	}
 	
-	public static String intToString(int n) {
-		StringBuffer res =  new StringBuffer();
-		for(int i=n,k=10;i>0;i=i-(i%k),k*=10) {
-			System.out.println((i%k));
+	static boolean premierK2I(int n) {
+		if (n == 2)
+			return true;
+		if ((n < 2) || (n % 2) == 0)
+			return false;
+		//test que sur les nombre impairs
+		for (int k = 3; k <= Math.sqrt(n); k += 2) {
+			if ((n % k) == 0)
+				return false;
 		}
-		System.out.println(res);
-		return "";
+		return true;
+	}
+	
+	static boolean premierSqrt(int n) {
+		boolean premier = true;
+		int impairs;
+		for(int i=1;i<n && premier;i++) {
+			impairs = (i*2)+1;
+			if(impairs > Math.sqrt(n)){
+				premier = false;
+			}
+		}
+		return premier;
+	}
+	
+	
+	/**
+	 * 
+	 * @param n integer le nombre de nombre premiers voulus
+	 */
+	
+	static String nPremiersNombrePremiers(int n) {
+		StringBuffer res = new StringBuffer(n);
+		for(int i=0;i<n;i++) {
+			if(premierSqrt(i)) {
+				res.append(" "+i);
+			}
+		}
+		return res.toString();
+	}
+	
+	public static void main(String [] args) {
+		System.out.println(premierSqrt(15));
+		nPremiersNombrePremiers(136);
 	}
 }

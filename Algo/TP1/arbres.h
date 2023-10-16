@@ -1,0 +1,1 @@
+//entete des fonctions et definition des structures.

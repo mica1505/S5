@@ -1,4 +1,4 @@
-package up.mi.cm.td1;
+package up.mi.cm.TD1;
 import java.util.Random;
 import java.util.Scanner;
 
