@@ -4,3 +4,4 @@ bin/*
 .gitignore.save.1
 .gitignore~
 *.exe
+*.out
