@@ -1,0 +1,13 @@
+package up.mi.cm.td4;
+
+public class UtilTab {
+	public static Integer maxTab(Integer [] tab) {
+		Integer res = tab[0];
+		for(int i=0;i<tab.length;i++) {
+			if(tab[i]>res) {
+				res = tab[i];
+			}
+		}
+		return res;
+	}
+}

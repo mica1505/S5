@@ -1,0 +1,14 @@
+package up.mi.cm.td4;
+
+public abstract class Produit {
+
+	private double prixHorsTax;
+	private TVA tva;
+	
+	Produit(double prixHorsTax,TVA tva){
+		this.prixHorsTax = prixHorsTax;
+		this.tva = tva;
+	}
+	
+	public abstract oduble prixTTC(double prixHorsTax,TVA tva);
+}

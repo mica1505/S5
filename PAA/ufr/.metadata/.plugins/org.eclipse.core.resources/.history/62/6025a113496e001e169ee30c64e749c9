@@ -1,0 +1,9 @@
+package up.mi.cm.td4;
+import up.mi.cm.td2.Point;
+public class Disque extends Figure{
+	Point centre;
+	double rayon;
+	public Disque(Point centre,double rayon) {
+		
+	}
+}
