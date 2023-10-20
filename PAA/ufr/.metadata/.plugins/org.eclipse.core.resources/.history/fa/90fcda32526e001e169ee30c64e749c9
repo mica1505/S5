@@ -1,0 +1,7 @@
+package up.mi.cm.td4.geometrie;
+
+public class Test {
+	public void main(String [] args) {
+		System.out.println("yo");
+	}
+}

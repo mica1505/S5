@@ -1,0 +1,14 @@
+package up.mi.cm.td4;
+import up.mi.cm.td2.Vecteur;
+public abstract class Figure {
+	
+	String nom;
+	
+	public Figure(String nom) {
+		this.nom = nom;
+	}
+	
+	public abstract double perimetre();
+	public abstract double surface();
+	public abstract Figure translation(Vecteur V);
+}

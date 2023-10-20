@@ -1,0 +1,12 @@
+package up.mi.cm.td4;
+
+public enum TVA {
+	NORMAL(0.2),INTERMEDIAIRE(0.1),REDUIT(0.55),PARTICULIER(0.21);
+	double taux;
+	
+	private TVA(double taux) {
+		this.taux = taux;
+	}
+	
+	public double getTaux() {return this.taux;
+}

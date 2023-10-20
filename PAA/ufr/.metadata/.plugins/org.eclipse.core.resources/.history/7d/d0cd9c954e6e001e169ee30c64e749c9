@@ -1,0 +1,26 @@
+package up.mi.cm.td4.geometrie;
+import up.mi.cm.td2.*;
+
+public class Losange extends Quadrilatere{
+	Point p1,p2,p3,p4;
+	double longueur;
+	
+	public Losange(Point p1, Point p2, int longueur) {
+		super(p1,p2,new Point(p1.getX()+longueur,p1.getY()+longueur),new Point(p2.getX()+longueur,p2.getY()+longueur),"Losange");
+		this.p1=p1;
+		this.p2=p2;
+		this.longueur= longueur;
+	}
+	
+	public Losange(Point p1, Point p2, Point p3,Point p4) {
+		super(p1,p2,p3,p4,"Losange");
+		this.p1=p1;
+		this.p2=p2;
+		this.p3=p3;
+		this.p4=p4;
+	}
+	
+	public double surface() {
+		return (p1.Distance(p2)*p3.Distance(p4))/2;
+	}
+}

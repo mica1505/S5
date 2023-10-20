@@ -1,0 +1,14 @@
+package up.mi.cm.td4;
+
+public class DVD extends Produit{
+	private String titre,realisateur;
+	double prix;
+	
+	public DVD(String titre,String realisateur,double prix) {
+		//soit on fait TVA.NORMAL.getTaux soit on met l'enum en arg apres dans la fonciton on appelle getTaux
+		super(prix, TVA.NORMAL);
+		this.titre = titre;
+		this.realisateur = realisateur;
+		this.prix = prix;
+	}
+}

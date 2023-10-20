@@ -1,0 +1,12 @@
+package up.mi.cm.td4;
+
+public class DVD extends Produit{
+	private String titre,realisateur;
+
+	
+	public DVD(String titre,String realisateur) {
+		super(TVA.NORMAL.getTaux());
+		this.titre = titre;
+		this.realisateur = realisateur;
+	}
+}

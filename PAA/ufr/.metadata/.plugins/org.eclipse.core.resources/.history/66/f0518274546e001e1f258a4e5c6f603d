@@ -1,0 +1,27 @@
+package up.mi.cm.td4.geometrie;
+import up.mi.cm.td2.*;
+
+public abstract class Quadrilatere extends Figure{
+	Point p1,p2,p3,p4;
+	String nom;
+	public Quadrilatere(Point p1,Point p2,Point p3,Point p4,String nom) {
+		super(nom);
+		this.p1=p1;
+		this.p2=p2;
+		this.p3=p3;
+		this.p4=p4;
+		this.nom = nom;
+	}
+	
+	public double perimetre() {
+		return p1.Distance(p2) + p2.Distance(p3) + p3.Distance(p4) + p1.Distance(p4);
+	}
+	
+	public Figure translation(Vecteur V) {
+		return null;
+	}
+	
+	public String toString() {
+		return super.toString();
+	}
+}
