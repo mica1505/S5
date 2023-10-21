@@ -1,22 +1,19 @@
-#ifndef H_LiSTES
-#define H_LISTES
+#ifndef H_FILES
+#define H_FILES
 
-
-typedef struct point{
-    int x,y;
-}point;
 
 typedef struct cellule{
     struct cellule * pre;
     struct cellule * succ;
-    point p;
+    int sommet;
 }cel;
 
 
 void afficher(cel * liste);
-cel * nouvCell(point p);
+int estVide(cel *liste);
+cel * nouvCell(int u);
 void insererCel(cel *liste,int pos, cel *cellule);
 void suppCel(int pos, cel ** liste);
-void defile(cel ** liste);
+int defile(cel ** liste);
 
 #endif
