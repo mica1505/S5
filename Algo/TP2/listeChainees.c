@@ -1,6 +1,7 @@
 //listes doublement chainees
 #include <stdio.h>
 #include <stdlib.h>
+#include "listeChainees.h"
 
 typedef struct point{
     int x,y;
@@ -13,6 +14,13 @@ typedef struct cellule{
 }cel;
 
 
+void afficher(cel * liste){
+    cel *posListe = liste;
+    //printf("%d %d\n",posListe->p.x,posListe->p.y);
+    for(posListe;posListe!=NULL;posListe = posListe->succ){
+        printf("%d %d\n",posListe->p.x,posListe->p.y);
+    }
+}
 cel * nouvCell(point p){
     cel *tmp = (cel *)malloc(sizeof(cel));
     if(!tmp){
@@ -38,16 +46,16 @@ void insererCel(cel *liste,int pos, cel *cellule){
     posListe->succ=cellule;  
 }
 
-void suppCel(int pos, cel * liste){
+void suppCel(int pos, cel ** liste){
     //on peut pas supprimer le premier element de la liste, on le suprime on perd le debut de la liste.
-    cel *posListe = liste;
+    cel *posListe = *liste;
     int i;
     if(pos == 1){
-        printf("On ne peut pas supprimer le premier element de la liste.");
-        liste->succ->pre = NULL;
-        posListe = liste->succ;
-        liste = posListe;
-        liste = liste->succ;
+
+        *liste = (posListe)->succ;
+        printf("\nDANS LA FONCITON\n");
+        afficher(*liste);
+        printf("\n----------------\n");
     }
     else{
 
@@ -63,12 +71,13 @@ void suppCel(int pos, cel * liste){
     }
 }
 
-void afficher(cel * liste){
-    cel *posListe = liste;
-    //printf("%d %d\n",posListe->p.x,posListe->p.y);
-    for(posListe;posListe!=NULL;posListe = posListe->succ){
-        printf("%d %d\n",posListe->p.x,posListe->p.y);
-    }
+void defile(cel ** liste){
+    cel *posListe = *liste;
+
+    *liste = (posListe)->succ;
+    printf("\nDANS LA FONCITON\n");
+    afficher(*liste);
+    printf("\n----------------\n");
 }
 
 int main(){
@@ -76,16 +85,33 @@ int main(){
     char choix;
     int quitter= 0;
     cel * poly,* nvPoint;
-    point p1;
-    printf("insertion du premier point\nEntrez x :\n");
-    scanf("%d", &p1.x);
-    printf("Entrez y :\n");
-    scanf("%d", &p1.y);
-    printf("-----------%d%d",p1.x,p1.y);
+
+    point p1,p2,p3;
+    p1.x = 1;p1.y =2;
+
     poly = nouvCell(p1);
-    int pos = 0;
+    afficher(poly);
+    printf("\n");
+
+    p2.x =3; p2.y=4;
+    insererCel(poly,1,nouvCell(p2));
+    afficher(poly);
+    printf("\n");
+
+    p3.x=5;p3.y=6;
+    insererCel(poly,2,nouvCell(p3)); 
+    afficher(poly);
+    printf("\n");
+
+    printf("\nSUPPRESSION\n");
+    suppCel(3,&poly);
+    //defile(&poly);
+    afficher(poly);
+    printf("\n");
+
+    /*int pos = 0;
     while(!quitter){
-        printf("Que voulez vous faire? (i->inserer, s->supprimer, q->quitter)");
+        printf("Que voulez vous faire? (i->inserer, s->supprimer, q->quitter) ");
         scanf("%s",&choix);
         switch (choix) {
             case 'i':
@@ -103,9 +129,9 @@ int main(){
                 afficher(poly);
                 break;
             case 's':
-                printf("suppresison de point\n");
+                printf("\nsuppresison de point\n");
                 int ind;
-                printf("Entrez l'indice du point que vous voulez supprimer : ");
+                printf("\nEntrez l'indice du point que vous voulez supprimer : ");
                 scanf("%d", &ind);
                 suppCel(ind,poly);
                 afficher(poly);
@@ -117,8 +143,8 @@ int main(){
                 free(poly);
                 quitter = 1;
         }
-}
- /*  point p,p2,p3;
+}*/
+ /* point p,p2,p3;
     p.x = 1;
     p.y = 2; 
 

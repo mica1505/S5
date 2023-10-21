@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "arbres.h"
 
-typedef struct noeud{
-    int num;
-    char val;
-    struct noeud *fg;
-    struct noeud *fd;
-}noeud;
 
 noeud * nouvNoeud(char carac){
     static int nb = 0;

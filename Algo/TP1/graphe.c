@@ -40,13 +40,13 @@ graphe * chargeGraphe(){
     
     printf("\nSAISIE DES %d ARETES : \nEntrez les numeros des sommets (u,v) tq u et v sont voisins : ",g->aretes);
 
-    //on part du principe que les sommets sont numerotes de 1 a g->sommet
+    //on part du principe que les sommets sont numerotes de 0 a g->sommet-1
     // et que g est un graphe non oriente et simple
     for(int i=0;i<g->aretes;i++){
         printf("\nArete n_%d :",i+1);
         scanf("%d %d", &n,&m);
-        g->adj[n-1][m-1] = 1;
-        g->adj[m-1][n-1] = 1;
+        g->adj[n][m] = 1;
+        g->adj[m][n] = 1;
     }
 
     return g;
@@ -69,30 +69,47 @@ void libererMemoire(graphe *g){
     free(g);
 }
 
+void afficheMarques(int *tab, int taille, char *s){
+    printf("\n %s \n", s);
+    for(int i=0;i<taille;i++){
+        printf(" %d ",tab[i]);
+    }
+}
+
 void marquerVoisins (int** adjacence, int ordre, int s){
-    int *marques;
-    int x, y; 
+    //maarque que les sommets voisin a S alors que nous on veut tt les sommets du graphe;
+    //dubcoup on nous demande de faire un BFS ?
+    //faire une fonction recursive qui s'appelle elle meme sur tout voisin d'un noeud
+    //c'est une fonciton pour marquer les voisins d'un seul noeud passe en parametre ou pour maruer tt les sommets du graphe?
+    int *marques, *ordreMarquage;
+    int x, y,indiceMarquage = 1,tousMarques=1; 
 
     marques = (int *)calloc(ordre, sizeof(int));
-    
+    ordreMarquage = (int *)malloc(sizeof(int)*ordre);
+
     if(!marques){
         perror("Erreur d'allocation memoire.\n");
     }
     
     marques[s] = 1 ;
-    
-    for (x=0 ; x<ordre ; x++)
-        if (marques[x]){
-            for (y=0 ; y<ordre ; y++){
-                if (adjacence[x][y] && !marques[y]){
-                    marques[y] = 1;
+    ordreMarquage[0] = s;
+
+    do{
+        for (x=0 ; x<ordre && tousMarques<ordre; x++){
+            if (marques[x]){
+                for (y=0 ; y<ordre; y++){
+                    if (adjacence[x][y] && !marques[y]){
+                        marques[y] = 1;
+                        ordreMarquage[indiceMarquage++] = y;
+                        tousMarques++;
+                    }
+                    printf("\n---X : %d Y : %d----\n TOUS MARQUES : %d\n",x,y,tousMarques);
+                    afficheMarques(marques,ordre,"LES VOISINS MARQUES SONT : ");
                 }
             }
-    }
-    printf("\nLES VOISINS MARQUES SONT : \n");
-    for(int i=0;i<ordre;i++){
-        printf(" %d ",marques[i]);
-    }
+        }
+    }while(tousMarques<ordre);
+    afficheMarques(ordreMarquage,ordre,"ORDRE DES VOISINS MARQUES");
 }
 
 int main(int argc, char *argv[]){

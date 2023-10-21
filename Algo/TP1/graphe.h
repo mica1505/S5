@@ -12,9 +12,8 @@ typedef struct graphe
 
 graphe * chargeGraphe();
 void marquerVoisins (int** adjacence, int ordre, int s);
-
 void affiche(graphe *g);
-
 void libererMemoire(graphe *g);
+void afficheMarques(int *tab, int taille, char *s);
 
 #endif
