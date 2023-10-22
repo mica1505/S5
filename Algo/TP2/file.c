@@ -3,14 +3,24 @@
 #include <stdlib.h>
 #include "file.h"
 
-void afficher(cel * liste){
+void afficheFile(cel * liste){
     cel *posListe = liste;
     //printf("%d %d\n",posListe->p.x,posListe->p.y);
     for(posListe;posListe!=NULL;posListe = posListe->succ){
-        printf("%d\n",posListe->sommet,posListe->sommet);
+        printf("%d\t",posListe->sommet,posListe->sommet);
     }
 }
-
+cel * file(){
+    cel *tmp = (cel *)malloc(sizeof(cel));
+    if(!tmp){
+        perror("Probleme d'allocation memoire");
+        return NULL;
+    }
+    tmp->pre = NULL;
+    tmp->succ = NULL;
+    //tmp->sommet = (int) NULL;
+    return tmp;
+}
 cel * nouvCell(int u){
     cel *tmp = (cel *)malloc(sizeof(cel));
     if(!tmp){
@@ -45,6 +55,7 @@ int estVide(cel *liste){
         return 0;
     }
 }
+
 int defile(cel ** liste){
     cel *posListe = *liste;
     int tmp = (*liste)->sommet;
@@ -52,12 +63,12 @@ int defile(cel ** liste){
     *liste = (posListe)->succ;
     free(posListe);
     if(estVide(*liste)){
-        printf("La file ne contient plus d'elements");
+        printf("\nFILE VIDE\n");
     }
     return tmp;
 }
 
-int main(){
+/*int main(){
     //menu 
     char choix;
     int quitter= 0;
@@ -90,4 +101,4 @@ int main(){
     printf("est vide %d\n",estVide(poly));
 
     return EXIT_SUCCESS;
-}
+}*/

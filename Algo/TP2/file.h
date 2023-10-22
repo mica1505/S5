@@ -8,8 +8,8 @@ typedef struct cellule{
     int sommet;
 }cel;
 
-
-void afficher(cel * liste);
+cel * file();
+void afficheFile(cel * liste);
 int estVide(cel *liste);
 cel * nouvCell(int u);
 void insererCel(cel *liste,int pos, cel *cellule);

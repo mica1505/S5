@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "file.c"
-
+#include "graphe.c"
+#include "graphe.h"
 
 void plusCourtChemin (int**adjacence, int ordre, int s, int *l, int *pred) {
+    //f une file qui contient les sommets dont on n'a pas encore visite les voisins
+    //pred permet de garder les predecesseurs
+    //l une liste des longueur de tous le ssommets en partant du sommet s
     // Variables locales
     int *marques ;
     int x, y ;
-    cel *f ; // file d’attente de sommets
+    cel *f ;
 
     marques = (int *)calloc(ordre, sizeof(int));
 
@@ -18,21 +22,46 @@ void plusCourtChemin (int**adjacence, int ordre, int s, int *l, int *pred) {
     for (x=0 ; x<ordre ; x++) {
         l[x] = 0 ;
     }
-    // Marquer le sommet s à 1
+    
     marques[s] = 1 ;
     // Créer (allouer) la file f et enfiler s dans f
-    enfiler(f,nouvCell(s));
-    while (f!=NULL) { // Tant que la file f n’est pas vide
-        x = defile(f); // Défiler le premier sommet x de la file f
-        printf("\nX : %d\n",x);
-        // Pour tous les sommets y adjacents à x et non marqués
+    /*f = file();
+    enfiler(f,nouvCell(s));*/
+    f = nouvCell(s);
+    printf("\n--PREMIER ENFILE FILE--\n");
+    afficheFile(f);
+    while (!estVide(f)) { 
+        x = f->sommet;
+        printf("\n--ON RECUPERE X %d-\n",x);
         for (y=0 ; y<ordre ; y++){
             if (adjacence[x][y] && !marques[y]) {
-                marques[y] = 1 ; // marquer le sommet y
-                enfiler(f, nouvCell(y)); // enfiler le sommet y dans f
-                pred[y] = x ; // x est le prédécesseur de y
-                l[y] = l[x]+1 ; // // incrémenter la longueur de y
+                marques[y] = 1 ;
+                printf("\n--BOUCLE ENFILE FILE--\n");
+                enfiler(f, nouvCell(y));
+                afficheFile(f);
+                pred[y] = x ;
+                l[y] = l[x]+1 ;
             }
         }
+        defile(&f);
+        printf("\n--ON DEFILE X %d--\n",x);
+        afficheFile(f);
     }
+
+}
+
+int main(){
+    graphe * test = chargeGraphe();
+    afficheGraphe(test);
+    //marquerVoisins(test->adj,test->sommet,1);
+    int l[test->sommet],pred[test->sommet];
+
+    printf("\nPLUS COURT CHEMIN\n");
+
+    plusCourtChemin(test->adj,test->sommet,2,l,pred);
+
+    afficheTab(l,test->sommet,"Liste des longueurs");
+    afficheTab(l,test->sommet,"Liste des predecesseurs");
+    libererMemoire(test);
+    return EXIT_SUCCESS;
 }
