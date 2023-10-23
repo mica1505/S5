@@ -5,10 +5,6 @@
 #include "graphe.h"
 
 void plusCourtChemin (int**adjacence, int ordre, int s, int *l, int *pred) {
-    //f une file qui contient les sommets dont on n'a pas encore visite les voisins
-    //pred permet de garder les predecesseurs
-    //l une liste des longueur de tous le ssommets en partant du sommet s
-    // Variables locales
     int *marques ;
     int x, y ;
     cel *f ;
@@ -22,11 +18,9 @@ void plusCourtChemin (int**adjacence, int ordre, int s, int *l, int *pred) {
     for (x=0 ; x<ordre ; x++) {
         l[x] = 0 ;
     }
-    
+    //may be afficher les sommets marques et leur ordre de marquage?
     marques[s] = 1 ;
-    // Créer (allouer) la file f et enfiler s dans f
-    /*f = file();
-    enfiler(f,nouvCell(s));*/
+
     f = nouvCell(s);
     printf("\n--PREMIER ENFILE FILE--\n");
     afficheFile(f);
