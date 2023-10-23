@@ -5,7 +5,7 @@
 
 graphe * chargeGraphe(){
 
-    int n,m;
+    int n,m,p;
     graphe *g = (graphe *)malloc(sizeof(graphe));
 
     if(!g){
@@ -38,15 +38,15 @@ graphe * chargeGraphe(){
         scanf("%d",&g->aretes);
     } while (g->aretes > (g->sommet*(g->sommet-1))/2);
     
-    printf("\nSAISIE DES %d ARETES : \nEntrez les numeros des sommets (u,v) tq u et v sont voisins : ",g->aretes);
+    printf("\nSAISIE DES %d ARETES : \nEntrez les numeros des sommets (u,v,p) tq u et v sont voisins et p est le poid de l'arete : ",g->aretes);
 
     //on part du principe que les sommets sont numerotes de 0 a g->sommet-1
     // et que g est un graphe non oriente et simple
     for(int i=0;i<g->aretes;i++){
         printf("\nArete n_%d :",i+1);
-        scanf("%d %d", &n,&m);
-        g->adj[n][m] = 1;
-        g->adj[m][n] = 1;
+        scanf("%d %d %d", &n,&m,&p);
+        g->adj[n][m] = p;
+        g->adj[m][n] = p;
     }
 
     return g;

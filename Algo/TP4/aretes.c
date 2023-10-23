@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include "aretes.h"
 
-void afficheFile(aretes * liste){
+void afficheArete(aretes * liste){
     aretes *posListe = liste;
     //printf("%d %d\n",posListe->p.x,posListe->p.y);
     for(posListe;posListe!=NULL;posListe = posListe->succ){
-        printf("(%d,%d,poir = %d)\t",posListe->u,posListe->v,posListe->poid);
+        printf("(%d,%d,poid = %d)\t",posListe->u,posListe->v,posListe->poid);
     }
 }
 aretes * nouvCell(int u,int v,int poid){
