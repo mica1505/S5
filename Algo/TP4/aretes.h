@@ -8,7 +8,7 @@ typedef struct cellule{
     int u,v,poid;
 }aretes;
 
-void afficheArete(aretes * liste);
+void afficheAretes(aretes * liste);
 int estVide(aretes *liste);
 aretes * nouvCell(int u,int v,int poid);
 void insererCel(aretes *liste,int pos, aretes *cellule);

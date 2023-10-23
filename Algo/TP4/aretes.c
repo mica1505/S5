@@ -24,7 +24,17 @@ aretes * nouvCell(int u,int v,int poid){
         return tmp;
     }
 }
-
+void insererCel(aretes *liste,int pos, aretes *cellule){
+    aretes *posListe = liste;
+    int k;
+    for(k=1;k<pos;k++,posListe=posListe->succ);
+    cellule->succ = posListe->succ;
+    cellule->pre = posListe;
+    if(posListe->succ!=NULL){
+        (cellule->succ)->pre = cellule;
+    }
+    posListe->succ=cellule;  
+}
 void enfiler(aretes *liste,aretes *cellule){
     if(!cellule){
         perror("\nLa cellule vaut null\n");

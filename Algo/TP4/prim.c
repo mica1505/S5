@@ -13,7 +13,7 @@ aretes * prim (int **adjacencePoids, int ordre,int s) {
     aretes *arbre ; // arbre d’incidence nœud-arc de poids minimum à retourner
     int indiceA = 0 ; // indice de l’arbre initialisé à 0
     int *marques ; // tableau dynamique indiquant si les sommets sont marqués ou non
-    int s, x, y, ymin,sommetMarque ; // numéros de sommets intermédiaires
+    int  x, y, ymin,sommetMarque ; // numéros de sommets intermédiaires
     float min ; // distance minimale du prochain sommet à marquer
     // Allouer l’arbre de « ordre-1 » arêtes et le tableau marque de « ordre » entiers
     arbre = (aretes *)malloc(sizeof(aretes) * (ordre-1));
@@ -40,14 +40,16 @@ aretes * prim (int **adjacencePoids, int ordre,int s) {
                         ymin = y ; // sommet y de poids min
                     }
                 }
+
             }
         }
     // marquer le sommet « ymin » de longueur minimale
     marques[ymin] = 1 ;
     // Insérer l’arête (x, ymin) de longueur min à la position « indiceA » de l’arbre
-
-    arbre[indiceA] = nouvCell(sommetMarque,ymin,min);
-    
+    if(indiceA == 0){
+        arbre = nouvCell(sommetMarque,ymin,min);
+    }
+    insererCel(arbre,indiceA,nouvCell(sommetMarque,ymin,min));
     // Passer à l’arête suivante de l‘arbre
     indiceA++ ;
     }
@@ -57,7 +59,7 @@ aretes * prim (int **adjacencePoids, int ordre,int s) {
 int main(int argc, char *argv[]){
     graphe * test = chargeGraphe();
     afficheGraphe(test);
-    aretes * res = prim((test->adj),8,2);
+    aretes * res = prim((test->adj),test->sommet,2);
     afficheArete(res);
     libererMemoire(test);
     return EXIT_SUCCESS;
