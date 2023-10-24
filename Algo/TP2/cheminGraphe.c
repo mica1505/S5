@@ -22,15 +22,15 @@ void plusCourtChemin (int**adjacence, int ordre, int s, int *l, int *pred) {
     marques[s] = 1 ;
 
     f = nouvCell(s);
-    printf("\n--PREMIER ENFILE FILE--\n");
+    //printf("\n--PREMIER ENFILE FILE--\n");
     afficheFile(f);
     while (!estVide(f)) { 
         x = f->sommet;
-        printf("\n--ON RECUPERE X %d-\n",x);
+        //printf("\n--ON RECUPERE X %d-\n",x);
         for (y=0 ; y<ordre ; y++){
             if (adjacence[x][y] && !marques[y]) {
                 marques[y] = 1 ;
-                printf("\n--BOUCLE ENFILE FILE--\n");
+                //printf("\n--BOUCLE ENFILE FILE--\n");
                 enfiler(f, nouvCell(y));
                 afficheFile(f);
                 pred[y] = x ;

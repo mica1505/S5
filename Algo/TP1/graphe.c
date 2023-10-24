@@ -2,7 +2,8 @@
 #include <stdlib.h>
 
 #include "graphe.h"
-
+//indexation a 0
+//les sommets d'un graphe d'ordre n sont numerotes de 0 a n-1
 graphe * chargeGraphe(){
 
     int n,m;
@@ -115,7 +116,7 @@ void marquerVoisins (int** adjacence, int ordre, int s){
 int main(int argc, char *argv[]){
     graphe * test = chargeGraphe();
     affiche(test);
-    marquerVoisins(test->adj,test->sommet,1);
+    marquerVoisins(test->adj,test->sommet,2);
     libererMemoire(test);
     return EXIT_SUCCESS;
 }
