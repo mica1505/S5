@@ -3,71 +3,13 @@
 #include <stdlib.h>
 #include "aretes.h"
 
-void afficheArete(aretes * liste){
-    aretes *posListe = liste;
+void afficheArete(aretes * liste,int ordre){
     //printf("%d %d\n",posListe->p.x,posListe->p.y);
-    for(posListe;posListe!=NULL;posListe = posListe->succ){
-        printf("(%d,%d,poid = %d)\t",posListe->u,posListe->v,posListe->poid);
-    }
-}
-aretes * nouvCell(int u,int v,int poid){
-    aretes *tmp = (aretes *)malloc(sizeof(aretes));
-    if(!tmp){
-        printf("Probleme d'allocation memoire");
-        return 0;
-    }
-    else{
-        tmp->u = u;
-        tmp->v = v;
-        tmp->poid = poid;
-        tmp->pre = tmp->succ = NULL;
-        return tmp;
-    }
-}
-void insererCel(aretes *liste,int pos, aretes *cellule){
-    aretes *posListe = liste;
-    int k;
-    for(k=1;k<pos;k++,posListe=posListe->succ);
-    cellule->succ = posListe->succ;
-    cellule->pre = posListe;
-    if(posListe->succ!=NULL){
-        (cellule->succ)->pre = cellule;
-    }
-    posListe->succ=cellule;  
-}
-void enfiler(aretes *liste,aretes *cellule){
-    if(!cellule){
-        perror("\nLa cellule vaut null\n");
-    }
-    if(!liste){
-        perror("\nLa file est vide\n");
-    }
-    aretes *posListe = liste;
-    for(posListe;posListe->succ!=NULL;posListe = posListe->succ);
-    cellule->pre = posListe;
-    posListe->succ=cellule; 
-
-}
-int estVide(aretes *liste){
-    if(liste==NULL){
-        return 1;
-    }
-    else{
-        return 0;
+    for(int i=0;i<ordre;i++){
+        printf("(%d,%d,poid = %d)\t",liste[i].u,liste[i].v,liste[i].poid);
     }
 }
 
-aretes * defile(aretes ** liste){
-    aretes *posListe = *liste;
-    aretes * tmp = (*liste);
-
-    *liste = (posListe)->succ;
-    free(posListe);
-    if(estVide(*liste)){
-        printf("\nFILE VIDE\n");
-    }
-    return tmp;
-}
 
 /*int main(){
     //menu 

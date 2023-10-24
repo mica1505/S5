@@ -46,10 +46,9 @@ aretes * prim (int **adjacencePoids, int ordre,int s) {
     // marquer le sommet « ymin » de longueur minimale
     marques[ymin] = 1 ;
     // Insérer l’arête (x, ymin) de longueur min à la position « indiceA » de l’arbre
-    if(indiceA == 0){
-        arbre = nouvCell(sommetMarque,ymin,min);
-    }
-    insererCel(arbre,indiceA,nouvCell(sommetMarque,ymin,min));
+    arbre[indiceA].u = sommetMarque;
+    arbre[indiceA].v = ymin;
+    arbre[indiceA].poid = min;
     // Passer à l’arête suivante de l‘arbre
     indiceA++ ;
     }
@@ -60,7 +59,7 @@ int main(int argc, char *argv[]){
     graphe * test = chargeGraphe();
     afficheGraphe(test);
     aretes * res = prim((test->adj),test->sommet,2);
-    afficheArete(res);
+    afficheArete(res,test->sommet-1);
     libererMemoire(test);
     return EXIT_SUCCESS;
 }

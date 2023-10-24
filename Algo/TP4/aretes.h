@@ -3,16 +3,9 @@
 
 
 typedef struct cellule{
-    struct cellule * pre;
-    struct cellule * succ;
     int u,v,poid;
 }aretes;
 
-void afficheAretes(aretes * liste);
-int estVide(aretes *liste);
-aretes * nouvCell(int u,int v,int poid);
-void insererCel(aretes *liste,int pos, aretes *cellule);
-void suppCel(int pos, aretes ** liste);
-aretes * defile(aretes ** liste);
+void afficheAretes(aretes * liste,int ordre);
 
 #endif
