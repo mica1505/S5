@@ -23,7 +23,8 @@ cel * nouvCell(point p){
         return tmp;
     }
 }
-
+//indexation commence a 1
+//on insere a la position apres pos
 void insererCel(cel *liste,int pos, cel *cellule){
     cel *posListe = liste;
     int k;
@@ -41,14 +42,9 @@ void suppCel(int pos, cel ** liste){
     cel *posListe = *liste;
     int i;
     if(pos == 1){
-
         *liste = (posListe)->succ;
-        printf("\nDANS LA FONCITON\n");
-        afficher(*liste);
-        printf("\n----------------\n");
     }
     else{
-
         for(i=1;i<pos;i++,posListe = posListe->succ);
         if(posListe->succ==NULL){
             posListe->pre->succ = NULL;
@@ -57,23 +53,73 @@ void suppCel(int pos, cel ** liste){
             posListe->succ->pre = posListe->pre;
             posListe->pre->succ = posListe->succ;
         }
-        free(posListe);
+        //free(posListe);
     }
 }
 
 void defile(cel ** liste){
     cel *posListe = *liste;
-
     *liste = (posListe)->succ;
-    printf("\nDANS LA FONCITON\n");
     afficher(*liste);
-    printf("\n----------------\n");
+}
+
+void menu(){
+    char choix;
+    int quitter= 0;
+    int pos = 0;
+    cel * poly,* nvPoint;
+
+    point p1;
+    printf("\nEntrez x : ");
+    scanf("%d",&p1.x);
+    printf("\nEntrez y : ");
+    scanf("%d",&p1.y);
+
+    poly = nouvCell(p1);
+    afficher(poly);
+    printf("\n");
+    while(!quitter){
+        printf("Que voulez vous faire? (i->inserer, s->supprimer, q->quitter) ");
+        scanf("%s",&choix);
+        switch (choix) {
+            case 'i':
+                printf("insertion de point\n");
+                point p;
+                int pos;
+
+                printf("\nEntrez l'indice dans lequel vous voulez inserer le point : ");
+                scanf("%d", &pos);
+
+                printf("\nEntrez x : ");
+                scanf("%d", &p.x);
+
+                printf("\nEntrez y : ");
+                scanf("%d", &p.y);
+
+                nvPoint = nouvCell(p);
+                insererCel(poly,pos,nvPoint);
+                afficher(poly);
+                break;
+            case 's':
+                printf("\nsuppresison de point\n");
+                int ind;
+                printf("\nEntrez l'indice du point que vous voulez supprimer : ");
+                scanf("%d", &ind);
+                suppCel(ind,&poly);
+                afficher(poly);
+                break;
+            case 'q':
+                afficher(poly);
+                printf("QUITTER\n");
+                //pour free faut free toute la memoire et pas que la premiere case !!!!!
+                free(poly);
+                quitter = 1;
+        }
+}
 }
 
 int main(){
     //menu 
-    char choix;
-    int quitter= 0;
     cel * poly,* nvPoint;
 
     point p1,p2,p3;
@@ -90,6 +136,7 @@ int main(){
 
     p3.x=5;p3.y=6;
     insererCel(poly,2,nouvCell(p3)); 
+    insererCel(poly,1,nouvCell(p1));
     afficher(poly);
     printf("\n");
 
@@ -98,64 +145,11 @@ int main(){
     //defile(&poly);
     afficher(poly);
     printf("\n");
-
-    /*int pos = 0;
-    while(!quitter){
-        printf("Que voulez vous faire? (i->inserer, s->supprimer, q->quitter) ");
-        scanf("%s",&choix);
-        switch (choix) {
-            case 'i':
-                printf("insertion de point\n");
-                point p;
-
-                printf("\nEntrez x : ");
-                scanf("%d", &p.x);
-
-                printf("\nEntrez y : ");
-                scanf("%d", &p.y);
-                //demander a l'utilisateur a quelle position il veut inserer?
-                nvPoint = nouvCell(p);
-                insererCel(poly,++pos,nvPoint);
-                afficher(poly);
-                break;
-            case 's':
-                printf("\nsuppresison de point\n");
-                int ind;
-                printf("\nEntrez l'indice du point que vous voulez supprimer : ");
-                scanf("%d", &ind);
-                suppCel(ind,poly);
-                afficher(poly);
-                break;
-            case 'q':
-                afficher(poly);
-                printf("QUITTER\n");
-                //pour free faut free toute la memoire et pas que la premiere case !!!!!
-                free(poly);
-                quitter = 1;
-        }
-}*/
- /* point p,p2,p3;
-    p.x = 1;
-    p.y = 2; 
-
-    cel * ajoutCel = nouvCell(p);
-
-    p2.x = 4;
-    p2.y = 5;
-    cel * nvpoint = nouvCell(p2);
-
-    p3.x = 6;
-    p3.y = 7;
-    cel * point3 = nouvCell(p3);
-
-    insererCel(ajoutCel,1,nvpoint);
-    insererCel(ajoutCel,2,point3);
-    afficher(ajoutCel);
-
-    suppCel(1,ajoutCel);
-
-    afficher(ajoutCel);
-    free(ajoutCel);
-    free(nvpoint);*/
+    //pour free
+    cel * finListe;
+    for(cel * posListe = poly->succ; posListe->succ!=NULL;posListe = posListe->succ){
+        printf("hello");
+        free(posListe->pre);
+    }
     return EXIT_SUCCESS;
 }
