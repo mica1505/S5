@@ -1,0 +1,11 @@
+1
+4
+4
+.D..
+...F
+.S..
+####
+
+nb instances
+lignes
+colonnes
